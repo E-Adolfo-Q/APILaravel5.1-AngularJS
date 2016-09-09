@@ -1,0 +1,14 @@
+<div class="card-panel">
+ <h3>{{title}}</h3>
+ <form ng-submit="saveNote()">
+ 	<div class="input-field">
+ 	 <input type="text" placeholder="Nombre" ng-model="Note.name" required/>
+   </div>
+   <div class="input-field">
+    <textarea class="materialize-textarea" placeholder="Descriptión" ng-model="Note.description" required></textarea>
+   </div>
+   <button class="btn waves-effect">
+   	 {{button}}
+   </button>
+ </form>
+</div>

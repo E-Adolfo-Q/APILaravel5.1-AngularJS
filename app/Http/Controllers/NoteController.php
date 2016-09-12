@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use API\Http\Requests;
 use API\Http\Controllers\Controller;
+use Illuminate\Routing\Route;
 use API\Note;
 
 class NoteController extends Controller
@@ -15,6 +16,14 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+       $this->beforeFilter('@find',['only'=>['show','update','destroy']]);
+    }
+
+    public function find(Route $route){
+      $this->note = Note::find($route->getParameter('notes'));      
+    }
+
     public function index()
     {       
        $notes = Note::all();       
@@ -51,7 +60,7 @@ class NoteController extends Controller
      */
     public function show($id)
     {
-      //
+       return response()->json($this->note);
     }
 
     /**
@@ -74,7 +83,9 @@ class NoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->note->fill($request->all());
+        $this->note->save();
+        return reponse()->json(["mensaje"=>"Creado Correctamente"]);
     }
 
     /**

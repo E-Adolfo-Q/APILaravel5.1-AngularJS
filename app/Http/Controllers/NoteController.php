@@ -16,8 +16,9 @@ class NoteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-      
+    {       
+       $notes = Note::all();       
+       return response()->json($notes->toArray());
     }
 
     /**
@@ -50,7 +51,7 @@ class NoteController extends Controller
      */
     public function show($id)
     {
-        //
+      //
     }
 
     /**

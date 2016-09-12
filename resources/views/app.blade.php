@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 	<title>Document</title>
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/materialize.min.css')}}">
 </head>
 <body ng-app="Client">

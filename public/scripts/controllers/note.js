@@ -1,7 +1,16 @@
 'use strict';
 angular.module('Client')
-.controller('IndexNoteCtrl',function($scope,NoteResource){
+.controller('IndexNoteCtrl',function($scope,NoteResource,$location,$timeout){
 	$scope.Notes = NoteResource.query();
+	$scope.removeNote = function(id){
+	   NoteResource.delete({           
+          id: id
+	   });
+	   Materialize.toast('Nota Eliminada',5000,'red accent-4');
+	   $timeout(function(){
+          $location.path('/notes');
+	   },1000);	
+	};
 })
 .controller('CreateNoteCtrl',function($scope,NoteResource,$location,$timeout){
    $scope.title = "Crear Nota";
